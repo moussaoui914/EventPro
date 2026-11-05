@@ -21,9 +21,14 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final CategorieBilletRepository categorieRepository;
     private final PromotionService promotionService;
+    private final ClientRepository clientRepository;
 
     @Transactional
     public ReservationResponse reserver(ReservationRequest request) {
+
+        Client client = clientRepository.findById(request.getClientId())
+                .orElseThrow(() -> new RuntimeException("Client introuvable"));
+
         CategorieBillet cat = categorieRepository.findByIdWithLock(request.getCategorieId());
 
         if (!cat.verifierStock(request.getQuantite())) {
@@ -37,6 +42,8 @@ public class ReservationService {
         res.setDateCreation(Instant.now());
         res.setDateExpiration(Instant.now().plus(10, ChronoUnit.MINUTES));
         res.setStatut(StatutReservation.PENDING_PAYMENT);
+
+        res.setClient(client);
 
         BigDecimal sousTotal = cat.getPrixUnitaire().multiply(BigDecimal.valueOf(request.getQuantite()));
 

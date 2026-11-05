@@ -6,6 +6,10 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class ReservationRequest {
+
+    @NotNull
+    private Long clientId;
+
     @NotNull
     private Long categorieId;
 
