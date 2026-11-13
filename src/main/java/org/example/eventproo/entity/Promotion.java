@@ -1,4 +1,4 @@
-﻿package org.example.eventproo.entity;
+package org.example.eventproo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.eventproo.enums.TypeReduction;

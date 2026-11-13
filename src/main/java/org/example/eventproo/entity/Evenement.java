@@ -1,4 +1,6 @@
-﻿package org.example.eventproo.entity;
+package org.example.eventproo.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.eventproo.enums.StatutEvenement;
@@ -11,6 +13,7 @@ public class Evenement {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private Organisateur organisateur;
 
     private String titre;

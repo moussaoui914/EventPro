@@ -1,2 +1,5 @@
-﻿package org.example.eventproo.enums;
-public enum StatutBillet { VALID, USED, CANCELLED }
+package org.example.eventproo.enums;
+
+public enum StatutBillet {
+    VALID, USED, CANCELLED
+}

@@ -12,7 +12,7 @@ public class PromotionCreateRequest {
     private String code;
 
     @NotNull
-    private TypeReduction typeReduction; // PERCENTAGE ou FIXED_AMOUNT
+    private TypeReduction typeReduction;
 
     @NotNull
     private BigDecimal valeurReduction;

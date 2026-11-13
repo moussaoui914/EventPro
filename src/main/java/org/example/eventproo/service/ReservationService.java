@@ -1,10 +1,12 @@
-﻿package org.example.eventproo.service;
+package org.example.eventproo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.eventproo.dto.request.ReservationRequest;
 import org.example.eventproo.dto.response.ReservationResponse;
 import org.example.eventproo.entity.*;
 import org.example.eventproo.enums.StatutReservation;
+import org.example.eventproo.exception.AucuneReservationTrouveeException;
+import org.example.eventproo.mapper.ReservationMapper;
 import org.example.eventproo.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +14,9 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -20,12 +24,12 @@ public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final CategorieBilletRepository categorieRepository;
-    private final PromotionService promotionService;
     private final ClientRepository clientRepository;
+    private final PromotionService promotionService;
+    private final ReservationMapper reservationMapper;
 
     @Transactional
     public ReservationResponse reserver(ReservationRequest request) {
-
         Client client = clientRepository.findById(request.getClientId())
                 .orElseThrow(() -> new RuntimeException("Client introuvable"));
 
@@ -42,7 +46,6 @@ public class ReservationService {
         res.setDateCreation(Instant.now());
         res.setDateExpiration(Instant.now().plus(10, ChronoUnit.MINUTES));
         res.setStatut(StatutReservation.PENDING_PAYMENT);
-
         res.setClient(client);
 
         BigDecimal sousTotal = cat.getPrixUnitaire().multiply(BigDecimal.valueOf(request.getQuantite()));
@@ -74,4 +77,9 @@ public class ReservationService {
                 .montantTotal(res.getMontantTotal())
                 .build();
     }
+
+
+
+    // MISE EN SITUATION
+
 }

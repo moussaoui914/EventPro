@@ -1,4 +1,6 @@
-﻿package org.example.eventproo.entity;
+package org.example.eventproo.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
@@ -9,6 +11,7 @@ public class CategorieBillet {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private Evenement evenement;
 
     private String nom;

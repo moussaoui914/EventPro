@@ -1,4 +1,4 @@
-﻿package org.example.eventproo.controller;
+package org.example.eventproo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.eventproo.dto.response.BilletResponse;

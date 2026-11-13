@@ -1,4 +1,4 @@
-﻿package org.example.eventproo.repository;
+package org.example.eventproo.repository;
 import org.example.eventproo.entity.Billet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-﻿package org.example.eventproo.entity;
+package org.example.eventproo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 @Entity @Getter @Setter @NoArgsConstructor

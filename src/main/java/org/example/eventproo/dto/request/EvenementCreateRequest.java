@@ -21,7 +21,6 @@ public class EvenementCreateRequest {
     @NotNull
     private int capacite;
 
-    // On inclut les catégories directement dans la création de l'événement
     private List<CategorieRequest> categories;
 
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor

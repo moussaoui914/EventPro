@@ -1,4 +1,4 @@
-﻿package org.example.eventproo.repository;
+package org.example.eventproo.repository;
 import jakarta.persistence.LockModeType;
 import org.example.eventproo.entity.CategorieBillet;
 import org.springframework.data.jpa.repository.JpaRepository;

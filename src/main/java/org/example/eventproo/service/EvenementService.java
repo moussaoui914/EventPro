@@ -29,7 +29,6 @@ public class EvenementService {
         evenement.setLieu(request.getLieu());
         evenement.setDateDebut(request.getDateDebut());
         evenement.setCapacite(request.getCapacite());
-
         evenement.setStatut(StatutEvenement.DRAFT);
 
         if (request.getCategories() != null) {
@@ -39,7 +38,7 @@ public class EvenementService {
                 cat.setNom(catReq.getNom());
                 cat.setPrixUnitaire(catReq.getPrixUnitaire());
                 cat.setQuantiteTotale(catReq.getQuantiteTotale());
-                cat.setEvenement(evenement); // Lien de composition
+                cat.setEvenement(evenement);
                 categories.add(cat);
             }
             evenement.setCategories(categories);
