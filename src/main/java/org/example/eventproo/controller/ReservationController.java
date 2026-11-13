@@ -22,5 +22,11 @@ public class ReservationController {
     }
 
 
-
+    @GetMapping("/recherche")
+    public List<ReservationResponse> rechercher(@RequestParam String email,
+                                                @RequestParam String nomCategorie,
+                                                @RequestParam(defaultValue = "1") int QuantiteMin,
+                                                @RequestParam String titreEvenement){
+        return reservationService.rechercherReservation(email,nomCategorie,QuantiteMin,titreEvenement);
+    }
 }

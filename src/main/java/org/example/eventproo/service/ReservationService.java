@@ -82,4 +82,13 @@ public class ReservationService {
 
     // MISE EN SITUATION
 
+    public List<ReservationResponse> rechercherReservation(String email, String nomCategorie, int QuantiteMin, String titreEvenement){
+        List<Reservation> reservations = reservationRepository.findReservationsConfirmees(email,nomCategorie,QuantiteMin,titreEvenement);
+
+        if (reservations.isEmpty()){
+            throw  new AucuneReservationTrouveeException("Reservation non trouver");
+        }
+
+        return reservations.stream().map(reservationMapper::toResponse).collect(Collectors.toList());
+    }
 }
